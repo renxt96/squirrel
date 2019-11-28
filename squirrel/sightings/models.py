@@ -182,3 +182,6 @@ class Squirrel(models.Model):
             max_length = 20,
             choices = TF_CHOICES,
     )
+
+    def __str__(self):
+	return self.unique_squirrel_id
