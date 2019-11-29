@@ -3,17 +3,19 @@ from django.db import models
 from django.utils.translation import gettext as _
 
 class Squirrel(models.Model):
-    X = models.FloatField(
+    longitude = models.FloatField(
             help_text=_('Longitude'),
      )
 
-    Y = models.FloatField(
+    latitude = models.FloatField(
             help_text=_('Latitude'),
      )
 
     unique_squirrel_id = models.CharField(
             help_text=_('Squirrel ID'),
             max_length = 100,
+            unique = True,
+            primary_key = True,
      )
 
     PM = 'pm'
@@ -28,6 +30,7 @@ class Squirrel(models.Model):
             help_text=_('Shift'),
             max_length = 5,
             choices = SHIFT_CHOICES,
+            default = AM,
     )
 
 
@@ -49,7 +52,7 @@ class Squirrel(models.Model):
             help_text = _('Age'),
             max_length = 20,
             choices = AGE_CHOICES,
-            default = OTHER,
+            default = ADULT,
     )
 
     BLACK = 'black'
@@ -67,7 +70,7 @@ class Squirrel(models.Model):
             help_text = _('Primary Fur Color'),
             max_length = 20,
             choices = PRIMARY_FUR_COLOR_CHOICES,
-            default = OTHER,
+            default = BLACK,
     )
 
     ABOVE_GROUND = 'above ground'
@@ -83,10 +86,10 @@ class Squirrel(models.Model):
             help_text = _('Location'),
             max_length = 50,
             choices = LOCATION_CHOICES,
-            default = OTHER,
+            default = ABOVE_GROUND,
     )
 
-    specific = models.CharField(
+    specific_location = models.CharField(
             help_text = _('Specific Location'),
             max_length = 100,
     )
@@ -103,30 +106,35 @@ class Squirrel(models.Model):
             help_text = _('Running'),
             max_length = 20,
             choices = TF_CHOICES,
+            default = FALSE,
     )
 
     chasing = models.CharField(
             help_text = _('Chasing'),
             max_length = 20,
             choices = TF_CHOICES,
+            default = FALSE,
     )
 
     climbing = models.CharField(
             help_text = _('Climbing'),
             max_length = 20,
             choices = TF_CHOICES,
+            default = FALSE,
     )
 
     eating = models.CharField(
             help_text = _('Eating'),
             max_length = 20,
             choices = TF_CHOICES,
+            default = FALSE,
     )
 
     foraging = models.CharField(
             help_text = _('Foraging'),
             max_length = 20,
             choices = TF_CHOICES,
+            default = FALSE,
     )
 
     other_activities = models.CharField(
@@ -138,30 +146,35 @@ class Squirrel(models.Model):
             help_text = _('Kuks'),
             max_length = 20,
             choices = TF_CHOICES,
+            default = FALSE,
     )
 
     quaas = models.CharField(
             help_text = _('Quaas'),
             max_length = 20,
             choices = TF_CHOICES,
+            default = FALSE,
     )
 
     moans = models.CharField(
             help_text = _('Moans'),
             max_length = 20,
             choices = TF_CHOICES,
+            default = FALSE,
     )
 
     tail_flags = models.CharField(
             help_text = _('Tail flags'),
             max_length = 20,
             choices = TF_CHOICES,
+            default = FALSE,
     )
 
     tail_twitches = models.CharField(
             help_text = _('Tail twitches'),
             max_length = 20,
             choices = TF_CHOICES,
+            default = FALSE,
     )
 
 
@@ -169,19 +182,22 @@ class Squirrel(models.Model):
             help_text = _('Approaches'),
             max_length = 20,
             choices = TF_CHOICES,
+            default = FALSE,
     )
 
     indifferent = models.CharField(
             help_text = _('Indifferent'),
             max_length = 20,
             choices = TF_CHOICES,
+            default = FALSE,
     )
 
     runs_from = models.CharField(
             help_text = _('Runs from'),
             max_length = 20,
             choices = TF_CHOICES,
+            default = FALSE,
     )
 
     def __str__(self):
-	return self.unique_squirrel_id
+        return self.unique_squirrel_id
