@@ -26,7 +26,7 @@ class Squirrel(models.Model):
             (AM, 'AM'),
     )
 
-    Shift = models.CharField(
+    shift = models.CharField(
             help_text=_('Shift'),
             max_length = 5,
             choices = SHIFT_CHOICES,
