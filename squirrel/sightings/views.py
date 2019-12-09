@@ -2,6 +2,7 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.template import loader
 from django.db.models import Count, Q
+from django.contrib import messages
 
 from .models import Squirrel
 from .form import SquirrelForm
@@ -15,21 +16,34 @@ def sightings(request):
 
 def add(request):
     if request.method == "POST":
-        new_squirrel = SquirrelForm(request.POST)
-        new_squirrel.save()
-        return redirect('/sightings/')
-    return render(request, 'sightings/add.html')
+        form = SquirrelForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "New sighting of squirrel is added successfully.")
+            return render(request, 'sightings/add.html',{'form':form})
+        else:
+            context = {'form': form,
+                        'error': "The sighting of squirrel cannot be added. Please check if the input values are valid."}
+            return render(request,'sightings/add.html', context)
+    else:
+        form = SquirrelForm()
+    return render(request, 'sightings/add.html', {'form': form})
+
 
 def detail(request, unique_squirrel_id):
-    data = Squirrel.objects.get(unique_squirrel_id=unique_squirrel_id)
+    squirrel = Squirrel.objects.get(unique_squirrel_id=unique_squirrel_id)
     if request.method == "POST":
-        if 'delete' in request.POST:
-            data.delete()
-        else:
-            data = SquirrelForm(instance=data,data=request.POST)
-            data.save()
-        return redirect('/sightings/')
-    return render(request, 'sightings/detail.html', {'data':data})
+        form = SquirrelForm(request.POST,instance=squirrel)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "New sighting of squirrel is updated successfully.")
+            return redirect(f'/sightings/{unique_squirrel_id}')
+    else:
+        form = SquirrelForm(instance=squirrel)
+    context = {
+        'form': form,
+    }
+    return render(request, 'sightings/detail.html', context)
 
 def stats(request):
     adult_squirrels = Squirrel.objects.filter(age = 'Adult').count()
