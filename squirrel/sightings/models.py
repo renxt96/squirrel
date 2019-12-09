@@ -4,17 +4,14 @@ from django.utils.translation import gettext as _
 
 class Squirrel(models.Model):
     X = models.FloatField(
-            help_text=_('Longitude'),
-     )
+    )
 
     Y = models.FloatField(
-            help_text=_('Latitude'),
-     )
+    )
 
     unique_squirrel_id = models.CharField(
-            help_text=_('Squirrel ID'),
             max_length = 100,
-     )
+    )
 
     PM = 'pm'
     AM = 'am'
@@ -25,14 +22,12 @@ class Squirrel(models.Model):
     )
 
     Shift = models.CharField(
-            help_text=_('Shift'),
             max_length = 5,
             choices = SHIFT_CHOICES,
     )
 
 
     date = models.DateField(
-            help_text = _('Date'),
     )
 
     ADULT = 'adult'
@@ -46,7 +41,6 @@ class Squirrel(models.Model):
     )
 
     age = models.CharField(
-            help_text = _('Age'),
             max_length = 20,
             choices = AGE_CHOICES,
             default = OTHER,
@@ -64,7 +58,6 @@ class Squirrel(models.Model):
     )
 
     primary_fur_color = models.CharField(
-            help_text = _('Primary Fur Color'),
             max_length = 20,
             choices = PRIMARY_FUR_COLOR_CHOICES,
             default = OTHER,
@@ -80,14 +73,12 @@ class Squirrel(models.Model):
     )
 
     location = models.CharField(
-            help_text = _('Location'),
             max_length = 50,
             choices = LOCATION_CHOICES,
             default = OTHER,
     )
 
     specific = models.CharField(
-            help_text = _('Specific Location'),
             max_length = 100,
     )
 
@@ -100,85 +91,71 @@ class Squirrel(models.Model):
     )
 
     running = models.CharField(
-            help_text = _('Running'),
             max_length = 20,
             choices = TF_CHOICES,
     )
 
     chasing = models.CharField(
-            help_text = _('Chasing'),
             max_length = 20,
             choices = TF_CHOICES,
     )
 
     climbing = models.CharField(
-            help_text = _('Climbing'),
             max_length = 20,
             choices = TF_CHOICES,
     )
 
     eating = models.CharField(
-            help_text = _('Eating'),
             max_length = 20,
             choices = TF_CHOICES,
     )
 
     foraging = models.CharField(
-            help_text = _('Foraging'),
             max_length = 20,
             choices = TF_CHOICES,
     )
 
     other_activities = models.CharField(
-            help_text = _('Other Activities'),
             max_length = 100
     )
 
     kuks = models.CharField(
-            help_text = _('Kuks'),
             max_length = 20,
             choices = TF_CHOICES,
     )
 
     quaas = models.CharField(
-            help_text = _('Quaas'),
             max_length = 20,
             choices = TF_CHOICES,
     )
 
     moans = models.CharField(
-            help_text = _('Moans'),
             max_length = 20,
             choices = TF_CHOICES,
     )
 
     tail_flags = models.CharField(
-            help_text = _('Tail flags'),
             max_length = 20,
             choices = TF_CHOICES,
     )
 
     tail_twitches = models.CharField(
-            help_text = _('Tail twitches'),
             max_length = 20,
             choices = TF_CHOICES,
     )
 
 
     approaches = models.CharField(
-            help_text = _('Approaches'),
             max_length = 20,
             choices = TF_CHOICES,
     )
 
     indifferent = models.CharField(
-            help_text = _('Indifferent'),
             max_length = 20,
             choices = TF_CHOICES,
     )
 
     runs_from = models.CharField(
-            help_text = _('Runs from'),
             max_length = 20,
             choices = TF_CHOICES,
     )
