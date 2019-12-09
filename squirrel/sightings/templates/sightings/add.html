@@ -1,116 +1,125 @@
 <! DOCTYPE HTML>
 <html>
-<h1> Add A New Squirrel To The Record</h1>
+  <h1> Add A New Squirrel To The Record</h1>
 
-<body>
-<form action="" method="post">
-{% csrf_token %}
- <p>Unique Squirrel ID: <input type="text" name="Unique_Squirrel_ID"><br></p>
- <p>Latitude: <input type="text" name="Latitude'><br></p>
- <p>Longitude: <input type="text" name="Longitude'><br></p>
- <p>Shift:
-  <select name="Shift">
-   <option value="AM">AM</option>
-   <option value="PM">PM</option>
-  </select>
- </p>
- <p>Date: <input type="date" name="Date'><br></p>
- <p>Age:
-  <select name="Age">
-   <option value="Adult">Adult</option>
-   <option value="Juvenile">Juvenile</option>
-  </select>
- </p>
- <p>Color:
-  <select name="Color">
-   <option value="Gray">Gray</option>
-   <option value="Cinnamon">Cinnamon</option>
-   <option value="Black">Black</option>
-  </select>
- </p>
- <p>Location:
-  <select name="Location">
-   <option value="Ground Plane">Ground Plane</option>
-   <option value="Above Ground">Above Ground</option>
-  </select>
- </p>
- <p>Specific Location: <input type="text" name="Specific_Location'><br></p>
- <p>Running:
-  <select name="Running">
-   <option value="True">True</option>
-   <option value="False">False</option>
-  </select>
- </p>
- <p>Chasing:
-  <select name="Chasing">
-   <option value="True">True</option>
-   <option value="False">False</option>
-  </select>
- </p>
- <p>Climbing:
-  <select name="Climbing">
-   <option value="True">True</option>
-   <option value="False">False</option>
-  </select>
- </p>
- <p>Eating:
-  <select name="Eating">
-   <option value="True">True</option>
-   <option value="False">False</option>
-  </select>
- </p>
- <p>Foraging:
-  <select name="Foraging">
-   <option value="True">True</option>
-   <option value="False">False</option>
-  </select>
- </p>
- <p>Other Activities: <input type="text" name="Other_Activities'><br></p>
- <p>Kuks:
-  <select name="Kuks">
-   <option value="True">True</option>
-   <option value="False">False</option>
-  </select>
- </p>
- <p>Quaas:
-  <select name="Quaas">
-   <option value="True">True</option>
-   <option value="False">False</option>
-  </select>
- </p>
- <p>Moans:
-  <select name="Moans">
-   <option value="True">True</option>
-   <option value="False">False</option>
-  </select>
- </p>
- <p>Tail Flags:
-  <select name="Tail Flags">
-   <option value="True">True</option>
-   <option value="False">False</option>
-  </select>
- </p>
- <p>Tail Twitches:
-  <select name="Tail Twitches">
-   <option value="True">True</option>
-   <option value="False">False</option>
-  </select>
- </p>
- <p>Approaches:
-  <select name="Approaches">
-   <option value="True">True</option>
-   <option value="False">False</option>
-  </select>
- </p>
- <p>Indifferent:
-  <select name="Indifferent">
-   <option value="True">True</option>
-   <option value="False">False</option>
-  </select>
- </p>
- <p>Runs From:
-  <select name="Runs From">
-   <option value="True">True</option>
-   <option value="False">False</option>
-  </select>
- </p>
+  <body>
+
+    <form action="" method="post">
+      {% csrf_token %}
+
+   <p>Unique Squirrel ID: <input type="text" name="Unique_Squirrel_ID"><br></p>
+
+   <p>Latitude: <input type="text" name="Latitude'><br></p>
+
+   <p>Longitude: <input type="text" name="Longitude'><br></p>
+
+   <p>Shift:
+    <select name="Shift">
+     <option value="AM">AM</option>
+     <option value="PM">PM</option>
+    </select>
+   </p>
+
+   <p>Date: <input type="date" name="Date'><br></p>
+
+   <p>Age:
+    <select name="Age">
+     <option value="Adult">Adult</option>
+     <option value="Juvenile">Juvenile</option>
+    </select>
+   </p>
+
+   <p>Color:
+    <select name="Color">
+     <option value="Gray">Gray</option>
+     <option value="Cinnamon">Cinnamon</option>
+     <option value="Black">Black</option>
+    </select>
+   </p>
+   
+   <p>Location:
+    <select name="Location">
+     <option value="Ground Plane">Ground Plane</option>
+     <option value="Above Ground">Above Ground</option>
+    </select>
+   </p>
+   <p>Specific Location: <input type="text" name="Specific_Location'><br></p>
+   <p>Running:
+    <select name="Running">
+     <option value="True">True</option>
+     <option value="False">False</option>
+    </select>
+   </p>
+   <p>Chasing:
+    <select name="Chasing">
+     <option value="True">True</option>
+     <option value="False">False</option>
+    </select>
+   </p>
+   <p>Climbing:
+    <select name="Climbing">
+     <option value="True">True</option>
+     <option value="False">False</option>
+    </select>
+   </p>
+   <p>Eating:
+    <select name="Eating">
+     <option value="True">True</option>
+     <option value="False">False</option>
+    </select>
+   </p>
+   <p>Foraging:
+    <select name="Foraging">
+     <option value="True">True</option>
+     <option value="False">False</option>
+    </select>
+   </p>
+   <p>Other Activities: <input type="text" name="Other_Activities'><br></p>
+   <p>Kuks:
+    <select name="Kuks">
+     <option value="True">True</option>
+     <option value="False">False</option>
+    </select>
+   </p>
+   <p>Quaas:
+    <select name="Quaas">
+     <option value="True">True</option>
+     <option value="False">False</option>
+    </select>
+   </p>
+   <p>Moans:
+    <select name="Moans">
+     <option value="True">True</option>
+     <option value="False">False</option>
+    </select>
+   </p>
+   <p>Tail Flags:
+    <select name="Tail Flags">
+     <option value="True">True</option>
+     <option value="False">False</option>
+    </select>
+   </p>
+   <p>Tail Twitches:
+    <select name="Tail Twitches">
+     <option value="True">True</option>
+     <option value="False">False</option>
+    </select>
+   </p>
+   <p>Approaches:
+    <select name="Approaches">
+     <option value="True">True</option>
+     <option value="False">False</option>
+    </select>
+   </p>
+   <p>Indifferent:
+    <select name="Indifferent">
+     <option value="True">True</option>
+     <option value="False">False</option>
+    </select>
+   </p>
+   <p>Runs From:
+    <select name="Runs From">
+     <option value="True">True</option>
+     <option value="False">False</option>
+    </select>
+   </p>
