@@ -1,71 +1,15 @@
+<!doctype>
 <html>
-<h1>
-  <meta charset="utf-8">
-  <title>General Stats of Squirrels in NYC</title>
-</h1>
-<body>
-  <div id="container"></div>
-  <script src="https://code.highcharts.com/highcharts.src.js"></script>
-  <script>
-    Highcharts.chart('container', {
-        chart: {
-            type: 'column'
-        },
-        title: {
-	    text: 'General Statistics of Squirrels Spotted in NYC'
-        },
-        xAxis: {
-	    categories: [
-	      {% for s in dataset %}'{{ s.unique_squirrel_id }} Class'{% if not forloop.last %}, {% endif %}{% endfor %}
-	    ]
-        },
-        series: [{
-	    name: 'Total Number of Squirrels Spotted',
-	    data: [
-	      {% for s in dataset %}{{ s.num_of_squirrels }}{% if not forloop.last %}, {% endif %}{% endfor %}
-	    ],
-        },{
-	    name: 'Adult Squirrels',
-	    data: [
-	      {% for s in dataset %}{{ s.adult_squirrels }}{% if not forloop.last %}, {% endif %}{% endfor %}
-	    ],
-	},{
-	    name: 'Juvenile Squirrels',
-	    data: [
-              {% for s in dataset %}{{ s.juvenile_squirrels }}{% if not forloop.last %}, {% endif %}{% endfor %}
-            ],
-	},{
-	    name: 'Gray Squirrels',
-	    data: [
-	      {% for s in dataset %}{{ s.gray_squirrels }}{% if not forloop.last %}, {% endif %}{% endfor %}      
-	    ],
-	},{
-            name: 'Black Squirrels',
-            data: [
-	      {% for s in dataset %}{{ s.black_squirrels }}{% if not forloop.last %}, {% endif %}{% endfor %}
-            ],
-        },{
-            name: 'Cinnamon Squirrels',
-            data: [
-	      {% for s in dataset %}{{ s.cinnamon_squirrels }}{% if not forloop.last %}, {% endif %}{% endfor %}
-            ],
-	},{
-            name: 'Num of Squirrels Running',
-            data: [
-	      {% for s in dataset %}{{ s.squirrels_running }}{% if not forloop.last %}, {% endif %}{% endfor %}
-	    ],
-	},{
-            name: 'Num of Squirrels Chasing'
-            data: [
-	      {% for s in dataset %}{{ s.squirrels_chasing }}{% if not forloop.last %}, {% endif %}{% endfor %}
-	    ],
-        },{
-	    name: 'Num of Squirrels Foraging',
-            data: [
-	      {% for s in dataset %}{{ s.squirrels_foraging }}{% if not forloop.last %}, {% endif %}{% endfor %}
-	    ],
-        }
-    );
-  </script>
-</body>
+  <body>
+
+    <h1>General Statistics of Squirrels Spotted in NYC</h1>
+
+    <p>There are {{ adult_squirrels }} adult squirrels.</p>
+    <p>There are {{ juvenile_squirrels }} juvenile squirrels.</p>
+    <p>There are {{ gray_squirrels }} gray squirrels.</p>
+    <p>There are {{ black_squirrels }} black squirrels.</p>
+    <p>There are {{ cinnamon_squirrels }} cinnamon squirrels.</p>
+
+  </body>
+
 </html>
