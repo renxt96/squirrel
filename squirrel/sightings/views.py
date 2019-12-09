@@ -11,7 +11,7 @@ def index(request):
 
 def sightings(request):
     squirrels = Squirrel.objects.all()
-    return render(request, '/sightings.html', {'squirrels':squirrels})
+    return render(request, 'sightings/sightings.html', {'squirrels':squirrels})
 
 def add(request):
     if request.method == "POST":
@@ -32,24 +32,22 @@ def detail(request, unique_squirrel_id):
     return render(request, 'sightings/detail.html', {'data':data})
 
 def stats(request):
-    dataset = Squirrel.objects \
-	.values('unique_squirrel_id') \
-        .annotate(num_of_squirrels=Count('unique_squirrel_id'),
-                adult_squirrels=Count('unique_squirrel_id', filter=Q(age=Adult)),
-                juvenile_squirrels=Count('unique_squirrel_id', filter=Q(age=Juvenile)),
-		gray_squirrels=Count('unique_squirrel_id', filter=Q(primary_fur_color=Gray)),
-                black_squirrels=Count('unique_squirrel_id', filter=Q(primary_fur_color=Black)),
-                cinnamon_squirrels=Count('unique_squirrel_id', filter=Q(primary_fur_color=Cinnamon)),
-		squirrels_running=Count('unique_squirrel_id', filter=Q(running=True)),
- 		squirrels_chasing=Count('unique_squirrel_id', filter=Q(chasing=True)),
-		squirrels_foraging=Count('unique_squirrel_id', filter=Q(foraging=True)))
-    return render(request, 'sightings/stats.html', {'dataset': dataset})
+    adult_squirrels = Squirrel.objects.filter(age = 'Adult').count()
+    juvenile_squirrels = Squirrel.objects.filter(age = 'Juvenile').count()
+    gray_squirrels = Squirrel.objects.filter(primary_fur_color = 'Gray').count()
+    black_squirrels = Squirrel.objects.filter(primary_fur_color = 'Black').count()
+    cinnamon_squirrels = Squirrel.objects.filter(primary_fur_color = 'Cinnamon').count()
+
+    context = {
+        'adult_squirrels': adult_squirrels,
+        'juvenile_squirrels': juvenile_squirrels,
+        'gray_squirrels': gray_squirrels,
+        'black_squirrels': black_squirrels,
+        'cinnamon_squirrels': cinnamon_squirrels,
+    }
+
+    return render(request, 'sightings/stats.html', context)
 
 def map(request):
-    xy = list()
-    for i in Squirrel.objects.all():
-        xy_dict = {}
-        xy_dict['latitude']=i.latitude
-        xy_dict['longitude']=i.longitude        
-        xy.append(xy_dict)
-    return render(request, 'sightings/map.html', {'xy':xy})
+    sightings = Squirrel.objects.all()[:100]
+    return render(request, 'sightings/map.html', {'sightings':sightings})
